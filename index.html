@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>HappyBirthday</title>
-  </head>
-  <body>
-    <h1 style="color: blue;">こちくんお誕生日おめでとう！</h1>
-    <img src="trombone_001.png" alt="trombone" height="200">
-  </body>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お誕生日おめでとうございます！</title>
+    <link rel="stylesheet" href="manasp_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="horn">📯</div>
+        <h1 class="title">お誕生日おめでとうございます！</h1>
+        <div class="message">
+            <p>先輩、お誕生日おめでとうございます！🎉</p>
+            <p>いつも素晴らしいホルンの音色で、オーケストラを支えてくださり、ありがとうございます。</p>
+            <p>先輩の演奏は、まるでブラームスの交響曲の中のホルンソロのように、温かく、力強く、そして心に響きます。</p>
+            <p>これからも素敵な音楽を奏でていってください。</p>
+            <p>素晴らしい1年になりますように！</p>
+        </div>
+        <div class="cake">🎂</div>
+    </div>
+
+    <script>
+        function createNote() {
+            const notes = ['🎵', '🎶', '♪', '♫', '♬'];
+            const note = document.createElement('div');
+            note.className = 'notes';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * window.innerWidth + 'px';
+            note.style.top = window.innerHeight + 'px';
+            document.body.appendChild(note);
+
+            const animation = note.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: 'translateY(-' + window.innerHeight + 'px) rotate(360deg)', opacity: 0 }
+            ], {
+                duration: 4000,
+                easing: 'linear'
+            });
+
+            animation.onfinish = () => note.remove();
+        }
+
+        setInterval(createNote, 300);
+    </script>
+</body>
 </html>
