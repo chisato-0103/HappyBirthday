@@ -20,29 +20,5 @@
         </div>
         <div class="cake">🎂</div>
     </div>
-
-    <script>
-        function createNote() {
-            const notes = ['🎵', '🎶', '♪', '♫', '♬'];
-            const note = document.createElement('div');
-            note.className = 'notes';
-            note.textContent = notes[Math.floor(Math.random() * notes.length)];
-            note.style.left = Math.random() * window.innerWidth + 'px';
-            note.style.top = window.innerHeight + 'px';
-            document.body.appendChild(note);
-
-            const animation = note.animate([
-                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: 'translateY(-' + window.innerHeight + 'px) rotate(360deg)', opacity: 0 }
-            ], {
-                duration: 4000,
-                easing: 'linear'
-            });
-
-            animation.onfinish = () => note.remove();
-        }
-
-        setInterval(createNote, 300);
-    </script>
 </body>
 </html>
