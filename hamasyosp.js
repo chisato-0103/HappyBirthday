@@ -59,6 +59,30 @@ class BalloonManager {
       balloon.remove();
       this.activeCount--;
     };
+
+    // スワイプイベントの追加
+    this.addSwipeEvent(balloon);
+  }
+
+  addSwipeEvent(balloon) {
+    let startX;
+
+    balloon.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    balloon.addEventListener('touchmove', (e) => {
+      const currentX = e.touches[0].clientX;
+      const deltaX = currentX - startX;
+
+      // バルーンをスワイプに応じて移動
+      balloon.style.transform = `translateX(${deltaX}px)`;
+    });
+
+    balloon.addEventListener('touchend', () => {
+      // スワイプが終了したら元の位置に戻す
+      balloon.style.transform = '';
+    });
   }
 
   addMusicNote(balloon) {
